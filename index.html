@@ -45,7 +45,9 @@
 
           <ul class="menu-links">
             <li>
-              <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+              <a href="index.html" class="active"
+                ><i class="fa-solid fa-house"></i> Home</a
+              >
             </li>
             <li>
               <a href="about.html"><i class="fa-solid fa-user"></i> About</a>
@@ -573,7 +575,9 @@
         <div class="testimonials-grid" id="testimonialsGrid"></div>
         <div class="mentee-actions">
           <button class="hero-cta" id="openMenteeForm">
-            Comment as a Mentee
+            <i class="fa-solid fa-user"></i>
+            <span>Comment as a Mentee</span>
+            <i class="fa-solid fa-pen-to-square"></i>
           </button>
         </div>
       </section>
@@ -635,6 +639,17 @@
               </div>
 
               <div class="form-group">
+                <label for="menteeProfession">Profession</label>
+                <input
+                  type="text"
+                  id="menteeProfession"
+                  name="profession"
+                  placeholder="e.g. UI/UX Designer, Student"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
                 <label for="menteeMessage">Your Comment</label>
                 <textarea
                   id="menteeMessage"
@@ -643,26 +658,6 @@
                   placeholder="Share your mentorship experience..."
                   required
                 ></textarea>
-              </div>
-
-              <div class="form-group">
-                <label>Upload Your Picture</label>
-                <div class="file-upload-wrapper">
-                  <input
-                    type="file"
-                    id="menteeFiles"
-                    name="attachments"
-                    accept="image/*"
-                    multiple
-                    class="file-input-hidden"
-                  />
-                  <label for="menteeFiles" class="file-upload-label">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <span>Click to upload or drag images</span>
-                    <small>Support for PNG, JPG (Max 5MB)</small>
-                  </label>
-                </div>
-                <div class="preview-grid" id="menteePreview"></div>
               </div>
             </div>
           </div>

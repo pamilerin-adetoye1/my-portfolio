@@ -301,18 +301,14 @@ async function loadMenteeSubmissions() {
     }
     const data = await res.json();
     const subs = data.submissions || [];
+
+    // Clear existing dynamic comments before re-rendering
+    // (We keep static testimonials if any, but usually we clear and render all)
+    // For this implementation, we append them to the existing grid
+
     subs.forEach((s) => {
       const card = document.createElement("div");
-      card.className = "testimonial-card";
-      const thumbs =
-        (s.attachments || [])
-          .filter((a) => a.mime_type?.startsWith("image/"))
-          .slice(0, 3)
-          .map(
-            (a) =>
-              `<div class="submission-thumb"><img src="${a.url}" alt="${a.filename}"/></div>`,
-          )
-          .join("") || "";
+      card.className = "testimonial-card fade-in";
       card.innerHTML = `
         <div class="testimonial-header">
           <div class="testimonial-avatar">${(s.name || "A?")
@@ -323,11 +319,10 @@ async function loadMenteeSubmissions() {
             .toUpperCase()}</div>
           <div class="testimonial-info">
             <h4>${s.name || "Anonymous"}</h4>
-            <p>${new Date(s.created_at).toLocaleDateString()}</p>
+            <p>${s.profession || "Mentee"}</p>
           </div>
         </div>
         <p class="testimonial-text">"${s.message || ""}"</p>
-        ${thumbs ? `<div class="submission-thumbs">${thumbs}</div>` : ""}
       `;
       grid.appendChild(card);
     });
@@ -683,8 +678,7 @@ function setupEventListeners() {
   const closeMenteeBtn = document.getElementById("closeMenteeForm");
   const menteeModal = document.getElementById("menteeModal");
   const menteeOverlay = document.getElementById("menteeOverlay");
-  const menteeFiles = document.getElementById("menteeFiles");
-  const menteePreview = document.getElementById("menteePreview");
+  const menteeForm = document.getElementById("menteeForm");
 
   if (openMenteeBtn) {
     openMenteeBtn.addEventListener("click", () => {
@@ -697,9 +691,7 @@ function setupEventListeners() {
     if (menteeModal) {
       menteeModal.classList.remove("active");
       document.body.style.overflow = "auto";
-      // Reset form
-      document.getElementById("menteeForm")?.reset();
-      if (menteePreview) menteePreview.innerHTML = "";
+      menteeForm?.reset();
     }
   }
 
@@ -711,23 +703,39 @@ function setupEventListeners() {
     menteeOverlay.addEventListener("click", closeMenteeModal);
   }
 
-  if (menteeFiles) {
-    menteeFiles.addEventListener("change", (e) => {
-      menteePreview.innerHTML = "";
-      const files = Array.from(e.target.files);
+  if (menteeForm) {
+    menteeForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const submitBtn = menteeForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
 
-      files.forEach((file) => {
-        if (file.type.startsWith("image/")) {
-          const reader = new FileReader();
-          reader.onload = (event) => {
-            const div = document.createElement("div");
-            div.className = "preview-item";
-            div.innerHTML = `<img src="${event.target.result}" alt="preview">`;
-            menteePreview.appendChild(div);
-          };
-          reader.readAsDataURL(file);
+      try {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+          '<i class="fa-solid fa-spinner fa-spin"></i> Posting...';
+
+        const formData = new FormData(menteeForm);
+        const response = await fetch("/", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (response.ok) {
+          closeMenteeModal();
+          // Refresh comments after a short delay to allow Netlify to process
+          setTimeout(() => {
+            loadNetlifyComments();
+          }, 2000);
+        } else {
+          throw new Error("Form submission failed");
         }
-      });
+      } catch (error) {
+        console.error("Submission error:", error);
+        alert("Something went wrong. Please try again.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
     });
   }
   // === CLOSE SUCCESS MODAL ===

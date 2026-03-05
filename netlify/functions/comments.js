@@ -57,16 +57,10 @@ exports.handler = async (event) => {
       id: s.id,
       created_at: s.created_at,
       name: s.data?.name || s.name || "Anonymous",
+      profession: s.data?.profession || "",
       email: s.data?.email || "",
       message: s.data?.message || "",
-      attachments:
-        Array.isArray(s.attachments) && s.attachments.length
-          ? s.attachments.map((a) => ({
-              url: a.url,
-              filename: a.filename,
-              mime_type: a.mime_type,
-            }))
-          : [],
+      attachments: [],
     }));
     return {
       statusCode: 200,

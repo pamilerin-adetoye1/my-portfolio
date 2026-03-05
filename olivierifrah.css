@@ -121,7 +121,8 @@ header {
   border-radius: 10px;
 }
 
-.menu-links li a:hover {
+.menu-links li a:hover,
+.menu-links li a.active {
   color: #000;
   background: #f3f3f3;
 }
@@ -873,14 +874,54 @@ footer {
     flex-direction: row; /* keep profile + hamburger side by side */
     justify-content: space-between;
     padding: 15px 20px;
+    background: rgba(249, 249, 249, 0.8);
+    backdrop-filter: blur(10px);
   }
 
   nav {
-    display: none;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+  }
+
+  nav ul {
+    padding: 4px 6px;
+    border-radius: 20px;
+    gap: 2px;
+  }
+
+  nav ul li {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    white-space: nowrap;
   }
 
   .hamburger {
     display: block;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  header {
+    padding: 10px 15px;
+  }
+
+  .profile-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  nav ul li {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .hamburger {
+    padding: 8px 12px;
+    font-size: 20px;
   }
 }
 
@@ -912,31 +953,34 @@ footer {
     max-width: 100%;
     margin-left: 0;
   }
-}
 
-@media (max-width: 768px) {
   .right-side .mockup .qanda {
     margin-left: 0;
-    margin-right: 30px;
-    /* margin: 0 auto; */
-    width: 80%; /* Keep original width or adjust to auto/100% if you want it full-width /
-display: block; / Ensures it behaves as a block for auto margins */
+    margin-right: 0;
+    width: 100%;
+    display: block;
   }
 }
 
-/* Extra small screens */
+/* Hero Section adjustments */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .hero-text,
   .description {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   .project-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .project-description {
