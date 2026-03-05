@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="./about.css" />
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-7.1.0-web/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./contact.css" />
+  </head>
+  <body>
+    <header>
+      <div class="profile-icon">
+        <a href="./index.html"
+          ><img src="./images/new-profile.png" alt="Profile"
+        /></a>
+      </div>
+
+      <div class="hamburger">&#9776;</div>
+
+      <!-- Floating Navigation Menu -->
+      <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-box">
+          <div class="menu-close" id="menuClose">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+          <ul class="menu-links">
+            <li>
+              <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+            </li>
+            <li>
+              <a href="about.html"><i class="fa-solid fa-user"></i> About</a>
+            </li>
+            <li>
+              <a href="contact.html" class="active"
+                ><i class="fa-solid fa-envelope"></i> Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <h1>Contact Me</h1>
+      <form
+        class="contact-form"
+        action="https://formspree.io/f/mvgdpvdl"
+        method="post"
+      >
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="What should I call you?"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Where should I respond?"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="How can I help you?"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/2348064200910" target="_blank" class="whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>
+          WhatsApp Me
+        </a>
+      </form>
+    </div>
+
+    <footer>
+      <div class="social-icons">
+        <a href="https://x.com/Pamilerinadeto2" class="icon" target="_blank"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/pamilerin-adetoye-08200319a/"
+          class="icon linkedin"
+          target="_blank"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a
+          href="https://www.behance.net/pamileradetoye"
+          class="icon"
+          target="_blank"
+          ><i class="fa-brands fa-behance"></i
+        ></a>
+      </div>
+      <p class="copyright">
+        Copyright © 2025 <span>Pamilerin</span>. Fully inspired by
+        <span class="olivier"
+          ><a
+            href="https://web.archive.org/web/20220810045455/https://www.olivierifrah.com/"
+            >olivierifrah</a
+          ></span
+        >.
+      </p>
+    </footer>
+
+    <script src="./about.js"></script>
+  </body>
+</html>

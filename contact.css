@@ -1,0 +1,298 @@
+/* ===== Base Layout ===== */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #f9f9f9;
+  color: #333;
+}
+
+/* ===== Container ===== */
+.container {
+  width: 90%;
+  max-width: 520px;
+  background: #fafafa;
+  padding: 50px;
+  border-radius: 18px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.05);
+  margin: 100px auto 60px auto;
+  transition: all 0.3s ease;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
+  text-align: center;
+}
+
+/* ===== Form ===== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+input,
+textarea {
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  background: white;
+  color: #333;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #aaa;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #bbb;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Buttons ===== */
+.submit-btn,
+.whatsapp {
+  margin-top: 15px;
+  padding: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Submit Button */
+.submit-btn {
+  color: #333;
+  background: white;
+}
+
+.submit-btn:hover {
+  background-color: #f9f9f9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* WhatsApp Button */
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+  background: #25d366;
+  text-decoration: none;
+}
+
+.whatsapp:hover {
+  background-color: #1ebe5b;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.whatsapp i {
+  font-size: 18px;
+}
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 80px;
+  position: sticky;
+  top: 0;
+  background: transparent;
+  z-index: 100;
+}
+
+.profile-icon img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  box-shadow: 0 1px 25px rgba(51, 51, 51, 0.295);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  font-size: 24px;
+  cursor: pointer;
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating Navigation Menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 40px 60px;
+  z-index: 999;
+}
+
+.menu-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 25px 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  width: 220px;
+}
+
+.menu-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.menu-links li a {
+  text-decoration: none;
+  color: #777;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.menu-links li a:hover,
+.menu-links a.active {
+  color: #000;
+  background: #f3f3f3;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: #f6f6f6;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.icon {
+  font-size: 30px;
+  color: #777;
+  transition: all 0.3s ease;
+}
+
+.icon:hover {
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.copyright {
+  font-size: 14px;
+  color: #666;
+}
+
+.copyright span {
+  color: #333;
+  font-weight: 500;
+}
+
+/* ===== Responsive ===== */
+
+/* Tablets */
+@media (max-width: 992px) {
+  header {
+    padding: 25px 50px;
+  }
+
+  .container {
+    width: 95%;
+    padding: 40px;
+  }
+}
+
+/* Mobile Landscape / Small Tablets */
+@media (max-width: 768px) {
+  header {
+    padding: 20px 30px;
+  }
+
+  .container {
+    padding: 30px;
+    margin-top: 70px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .menu-box {
+    width: 200px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 25px 20px;
+    margin-top: 60px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .submit-btn,
+  .whatsapp {
+    padding: 16px;
+    font-size: 15px;
+  }
+
+  .profile-icon img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .menu-box {
+    width: 180px;
+    padding: 20px;
+  }
+
+  .hamburger {
+    padding: 8px 12px;
+    font-size: 22px;
+  }
+}

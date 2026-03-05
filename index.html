@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pamilerin</title>
+    <link rel="stylesheet" href="./olivierifrah.css" />
+    <link rel="stylesheet" href="./mentorship.css" />
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-7.1.0-web/css/all.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="./images/new-profile.png"
+      type="image/x-icon"
+    />
+    <!-- Paystack Payment Integration -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="profile-icon">
+        <img src="./images/new-profile.png" alt="Profile" />
+      </div>
+
+      <!-- Tab Navigation -->
+      <nav>
+        <ul id="tabs">
+          <li id="work-tab" class="active">Work</li>
+          <li id="hustles-tab">Side Hustles</li>
+          <li id="mentorship-tab">Mentorship</li>
+        </ul>
+      </nav>
+
+      <div class="hamburger">&#9776;</div>
+
+      <!-- Floating Navigation Menu -->
+      <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-box">
+          <div class="menu-close" id="menuClose">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+
+          <ul class="menu-links">
+            <li>
+              <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+            </li>
+            <li>
+              <a href="about.html"><i class="fa-solid fa-user"></i> About</a>
+            </li>
+            <li>
+              <a href="contact.html"
+                ><i class="fa-solid fa-envelope"></i> Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- GLOBAL FLOATING BOXES -->
+    <div class="floating-boxes"></div>
+
+    <!-- WORK SECTION -->
+    <section id="work" class="active">
+      <div class="hero">
+        <h1 class="pamilerin">Hi, I'm Pamilerin.</h1>
+        <p class="hero-text">UI/UX DESIGNER | FRONTEND DEVELOPER</p>
+        <div class="location">
+          <span class="location-icon"
+            ><i class="fa-solid fa-location-dot"></i
+          ></span>
+          Nigeria
+          <span class="pulse-dot"></span>
+        </div>
+        <div class="description">
+          I help creatives convert their ideas into functional and interactive
+          graphical interfaces and experience.
+        </div>
+      </div>
+
+      <!-- Sixth Project Card -->
+      <div class="project-card">
+        <div class="left-side">
+          <div class="project-icon">
+            <img src="./Logos/REACTiONS.svg" alt="icon" />
+          </div>
+          <h2 class="project-title">REACTIONS</h2>
+          <div class="project-subtitle">
+            UI DESIGN & DEVELOPMENT [NEXTJS] • 2026 <br />
+            SIDE PROJECT
+          </div>
+          <div class="project-description">
+            Content Creation can never die, even with the evelution of AI, there
+            will always be the need to use short funny clips to spice up video
+            contents. So I designed a platform that allows creators to download
+            short funny clips and use them in their videos.
+          </div>
+          <button
+            class="case-study-btn"
+            onclick="openProject('https://reactions-vert.vercel.app/')"
+          >
+            <span>View Live Site</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <a
+            href="javascript:void(0)"
+            class="figma-link"
+            onclick="
+              openProject(
+                'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FXTWviTFPcV8PxM8CEswj4f%2Fmemeid%3Fpage-id%3D0%253A1%26node-id%3D1-6%26viewport%3D302%252C-220%252C0.47%26t%3Do4Udi7p9Zjh8YmzE-1%26scaling%3Dscale-down%26content-scaling%3Dfixed',
+              )
+            "
+          >
+            <i class="fa-brands fa-figma"></i> View Figma File
+          </a>
+        </div>
+
+        <div class="right-side">
+          <div class="mockup">
+            <img src="./images/home.png" alt="Reactions image Mockup" />
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT CARD -->
+      <div class="project-card">
+        <div class="left-side">
+          <div class="project-icon">
+            <img class="pm-news" src="./Logos/pmnews logo.png" alt="icon" />
+          </div>
+          <h2 class="project-title">PM News</h2>
+          <div class="project-subtitle">UX/UI DESIGN • 2025</div>
+          <div class="project-description">
+            Redesigning News website to a mordern News Platform that enhances
+            User Engagement and attracts younger audience.
+          </div>
+          <button
+            class="case-study-btn"
+            onclick="
+              openProject(
+                'https://www.behance.net/gallery/236256795/PM-News-UIUX-Case-Study',
+              )
+            "
+          >
+            <span>Read the Case Study</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <a
+            href="javascript:void(0)"
+            class="figma-link"
+            onclick="
+              openProject(
+                'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FVXz5qTgkmx4N4KWo3I0wTq%2Fpmnews%3Fnode-id%3D0-1%26t%3DcXXXsTy9lAROlg29-1',
+              )
+            "
+          >
+            <i class="fa-brands fa-figma"></i> View Figma File
+          </a>
+        </div>
+
+        <div class="right-side">
+          <div class="mockup">
+            <img src="./images/pmnewsz.png" alt="Suggested Jobs Mockup" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Project Card -->
+
+      <div class="project-card">
+        <div class="left-side">
+          <div class="project-icon">
+            <img src="./images/QA LOGO.png" alt="icon" />
+          </div>
+          <h2 class="project-title">Q and A</h2>
+          <div class="project-subtitle">UX/UI DESIGN | SIDE PROJECT • 2025</div>
+          <div class="project-description">
+            Designing a platform Where questions find answers and knowledge is
+            celebrated.
+          </div>
+          <button
+            class="case-study-btn no-cursor"
+            onclick="
+              openProject(
+                'https://www.behance.net/gallery/171215773/INSURANCE-WEBSITE-(USER-INTERFACE-DESIGN)',
+              )
+            "
+          >
+            <span>Case Study In Progress</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="right-side">
+          <div class="mockup">
+            <img
+              class="qanda"
+              src="./images/Q AND A HOME 1.png"
+              alt="Suggested Jobs Mockup"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Project Card -->
+
+      <div class="project-card">
+        <div class="left-side">
+          <div class="project-icon">
+            <img src="./Logos/C.png" alt="icon" />
+          </div>
+          <h2 class="project-title">LEENKAZ Insurance</h2>
+          <div class="project-subtitle">UX/UI DESIGN • 2023</div>
+          <div class="project-description">
+            Clean, intuitive UI/UX design for an insurance platform that builds
+            trust and simplifies decision making. • | User Dashboard & Website |
+          </div>
+          <button
+            class="case-study-btn"
+            onclick="
+              openProject(
+                'https://www.behance.net/gallery/171215773/INSURANCE-WEBSITE-(USER-INTERFACE-DESIGN)',
+              )
+            "
+          >
+            <span>Read the Case Study</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <a href="javascript:void(0)" class="figma-link no-cursor">
+            <i class="fa-brands fa-figma"></i> figma file protected by
+            Non-Disclosure Agreement
+          </a>
+        </div>
+
+        <div class="right-side">
+          <div class="mockup">
+            <img src="./images/Group 64.png" alt="Suggested Jobs Mockup" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Fourth Project Card -->
+      <div class="project-card">
+        <div class="left-side">
+          <div class="project-icon">
+            <img src="./images/Deegitalz.png" alt="icon" />
+          </div>
+          <h2 class="project-title">DEEGITALz</h2>
+          <div class="project-subtitle">SIDE PROJECT • 2023</div>
+          <div class="project-description">
+            Designing a platform exclusively for buying and selling of Digital
+            Products
+          </div>
+          <button
+            class="case-study-btn"
+            onclick="
+              openProject(
+                'https://www.behance.net/gallery/232749879/Deegitalz-Case-Study',
+              )
+            "
+          >
+            <span>Read the Case Study</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="right-side">
+          <div class="mockup">
+            <img src="./images/DeegitalzHome.png" alt="Deegitalz Jobs Mockup" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Fifth Project Card -->
+      <div class="project-card">
+        <div class="left-side">
+          <div class="project-icon">
+            <img src="./Logos/punch.png" alt="icon" />
+          </div>
+          <h2 class="project-title">PunchNg</h2>
+          <div class="project-subtitle">UI DESIGN • 2023</div>
+          <div class="project-description">
+            Designing an Election Page for PunchNg.
+          </div>
+          <button
+            class="case-study-btn"
+            onclick="
+              openProject(
+                'https://www.behance.net/gallery/183422417/News-Blog-Website',
+              )
+            "
+          >
+            <span>Read the Case Study</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="right-side">
+          <div class="mockup">
+            <img src="./images/punchhr.png" alt="Deegitalz Jobs Mockup" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Brands Worked with -->
+      <div class="brand-section">
+        <div class="brandhead"><h4>Brands I've Worked With</h4></div>
+        <div class="brand-track">
+          <img src="./Logos/theNigerianObservers.png" alt="Brand 1" />
+          <img src="./Logos/punch.png" alt="Brand 2" />
+          <img src="./Logos/celercentral.png" alt="Brand 3" />
+          <img src="./Logos/virals.png" alt="Brand 4" />
+          <img src="./Logos/craftudy.png" alt="Brand 5" />
+          <img class="pm-news" src="./Logos/pmnews logo.png" alt="Brand 6" />
+          <img src="./Logos/C.png" alt="Brand 7" />
+          <img src="./Logos/funmystyles.png" alt="Brand 8" />
+          <img class="eagles" src="./Logos/eagles.png" alt="Brand 00" />
+          <img src="./Logos/lcs.png" alt="Brand 10" />
+
+          <!-- Duplicated logos for seamless loop -->
+          <img src="./Logos/theNigerianObservers.png" alt="Brand 1" />
+          <img src="./Logos/punch.png" alt="Brand 2" />
+          <img src="./Logos/celercentral.png" alt="Brand 3" />
+          <img src="./Logos/virals.png" alt="Brand 4" />
+          <img src="./Logos/craftudy.png" alt="Brand 5" />
+          <img class="pm-news" src="./Logos/pmnews logo.png" alt="Brand 1" />
+          <img src="./Logos/C.png" alt="Brand 2" />
+          <img src="./Logos/funmystyles.png" alt="Brand 3" />
+          <img class="eagles" src="./Logos/eagles.png" alt="Brand 4" />
+          <img src="./Logos/lcs.png" alt="Brand 5" />
+        </div>
+      </div>
+      <footer>
+        <div class="social-icons">
+          <a href="https://x.com/Pamilerinadeto2" class="icon" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/pamilerin-adetoye-08200319a/"
+            class="icon linkedin"
+            target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a
+            href="https://www.behance.net/pamileradetoye"
+            class="icon"
+            target="_blank"
+            ><i class="fa-brands fa-behance"></i
+          ></a>
+        </div>
+        <p class="copyright">
+          Copyright © 2025 <span>Pamilerin</span>. Fully inspired by
+          <span class="olivier"
+            ><a
+              href="https://web.archive.org/web/20220810045455/https://www.olivierifrah.com/"
+              >olivierifrah</a
+            ></span
+          >
+          . All rights reserved.
+        </p>
+      </footer>
+    </section>
+
+    <!-- SIDE HUSTLES SECTION -->
+
+    <section id="hustles">
+      <div class="hero">
+        <h1 class="pamilerin">Side Hustles.</h1>
+        <div class="description">
+          Turning creative skills into professional services. High-quality
+          execution across design and development.
+        </div>
+      </div>
+
+      <div class="hustle-container">
+        <div class="hustle-track">
+          <!-- Motion Graphics Card -->
+          <div class="hustle-card motion">
+            <a href="gallery.html?category=motionGraphics" class="gallery-link">
+              <i class="fa-solid fa-images"></i>
+              <span>View Gallery</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="hustle-content">
+              <div class="hustle-tag">Creative</div>
+              <h3 class="hustle-title">Motion Graphics</h3>
+              <p class="hustle-desc">
+                Bringing stories to life through fluid animations and dynamic
+                visual storytelling.
+              </p>
+              <ul class="hustle-features">
+                <li>• Logo Animation</li>
+                <li>• Explainer Videos</li>
+                <li>• UI Motion</li>
+              </ul>
+            </div>
+            <div class="hustle-overlay"></div>
+          </div>
+
+          <!-- Frontend Dev Card -->
+          <div class="hustle-card frontend">
+            <a href="gallery.html?category=frontend" class="gallery-link">
+              <i class="fa-solid fa-images"></i>
+              <span>View Gallery</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="hustle-content">
+              <div class="hustle-tag">Development</div>
+              <h3 class="hustle-title">Frontend Dev</h3>
+              <p class="hustle-desc">
+                Building responsive, high-performance web interfaces with modern
+                frameworks.
+              </p>
+              <ul class="hustle-features">
+                <li>• React/Next.js</li>
+                <li>• Interactive UI</li>
+                <li>• Performance Opt.</li>
+              </ul>
+            </div>
+            <div class="hustle-overlay"></div>
+          </div>
+
+          <!-- Branding Design Card -->
+          <div class="hustle-card branding">
+            <a href="gallery.html?category=branding" class="gallery-link">
+              <i class="fa-solid fa-images"></i>
+              <span>View Gallery</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="hustle-content">
+              <div class="hustle-tag">Design</div>
+              <h3 class="hustle-title">Branding Design</h3>
+              <p class="hustle-desc">
+                Crafting unique visual identities that resonate and build
+                lasting brand value.
+              </p>
+              <ul class="hustle-features">
+                <li>• Logo Design</li>
+                <li>• Visual Systems</li>
+                <li>• Brand Guidelines</li>
+              </ul>
+            </div>
+            <div class="hustle-overlay"></div>
+          </div>
+
+          <!-- Social Media Card -->
+          <div class="hustle-card social">
+            <a
+              href="gallery.html?category=socialMediadesign"
+              class="gallery-link"
+            >
+              <i class="fa-solid fa-images"></i>
+              <span>View Gallery</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="hustle-content">
+              <div class="hustle-tag">Marketing</div>
+              <h3 class="hustle-title">Social Media Design</h3>
+              <p class="hustle-desc">
+                Eye-catching fliers and content designed to stop the scroll and
+                engage.
+              </p>
+              <ul class="hustle-features">
+                <li>• Instagram Fliers</li>
+                <li>• Ad Creatives</li>
+                <li>• Content Strategy</li>
+              </ul>
+            </div>
+            <div class="hustle-overlay"></div>
+          </div>
+
+          <!-- WordPress Card -->
+          <div class="hustle-card wordpress">
+            <div class="hustle-content">
+              <div class="hustle-tag">CMS</div>
+              <h3 class="hustle-title">WordPress Dev</h3>
+              <p class="hustle-desc">
+                Scalable and easy-to-manage websites tailored to your business
+                needs.
+              </p>
+              <ul class="hustle-features">
+                <li>• Custom Themes</li>
+                <li>• E-commerce</li>
+                <li>• SEO Ready</li>
+              </ul>
+            </div>
+            <div class="hustle-overlay"></div>
+          </div>
+
+          <!-- Image Optimization Card -->
+          <div class="hustle-card images">
+            <div class="hustle-content">
+              <div class="hustle-tag">Assets</div>
+              <h3 class="hustle-title">Image Optimization</h3>
+              <p class="hustle-desc">
+                Fast and precise background removal, resizing, and bulk editing.
+              </p>
+              <ul class="hustle-features">
+                <li>• Background Removal</li>
+                <li>• Bulk Resizing</li>
+                <li>• Color Grading</li>
+              </ul>
+            </div>
+            <div class="hustle-overlay"></div>
+          </div>
+        </div>
+        <div class="hustle-hint hidden">
+          <span class="hint-text">Swipe left to explore</span>
+          <span class="hint-arrow"
+            ><i class="fa-solid fa-arrow-right"></i
+          ></span>
+        </div>
+      </div>
+
+      <footer>
+        <div class="social-icons">
+          <a href="https://x.com/Pamilerinadeto2" class="icon" target="_blank"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/pamilerin-adetoye-08200319a/"
+            class="icon linkedin"
+            target="_blank"
+            ><i class="fab fa-linkedin-in"></i
+          ></a>
+          <a
+            href="https://www.behance.net/pamileradetoye"
+            class="icon"
+            target="_blank"
+            ><i class="fa-brands fa-behance"></i
+          ></a>
+        </div>
+        <p class="copyright">
+          Copyright © 2025 <span>Pamilerin</span>. Fully inspired by
+          <span class="olivier"
+            ><a
+              href="https://web.archive.org/web/20220810045455/https://www.olivierifrah.com/"
+              >olivierifrah</a
+            ></span
+          >
+          . All rights reserved.
+        </p>
+      </footer>
+    </section>
+
+    <!-- MENTORSHIP SECTION -->
+    <section id="mentorship">
+      <!-- MENTORSHIP HERO -->
+      <div class="mentorship-hero">
+        <div class="hero-content">
+          <h1>Learn Directly From Me</h1>
+          <p class="hero-tagline">
+            1-on-1 mentorship programs designed to accelerate your growth in
+            Design, Development, and Security.
+          </p>
+          <button class="hero-cta" id="scrollToPlans">
+            Book a Mentorship <i class="fa-solid fa-arrow-down"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- MENTORSHIP GRID -->
+      <div class="mentorship-grid" id="mentorshipGrid">
+        <!-- Cards will be generated by JavaScript -->
+      </div>
+
+      <!-- TESTIMONIALS SECTION -->
+      <section class="testimonials-section">
+        <h2 class="section-title">What My Mentees Say</h2>
+        <div class="testimonials-grid" id="testimonialsGrid"></div>
+        <div class="mentee-actions">
+          <button class="hero-cta" id="openMenteeForm">
+            Comment as a Mentee
+          </button>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-container" id="faqContainer">
+          <!-- FAQ items will be generated by JavaScript -->
+        </div>
+      </section>
+    </section>
+
+    <!-- MENTEE COMMENT MODAL -->
+    <div id="menteeModal" class="booking-modal">
+      <div class="booking-modal-overlay" id="menteeOverlay"></div>
+      <div class="booking-modal-content">
+        <div class="booking-modal-header">
+          <h2>Share Your Experience</h2>
+          <button type="button" class="close-btn" id="closeMenteeForm">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <form
+          name="mentee-comment"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          enctype="multipart/form-data"
+          class="mentee-form-new"
+          id="menteeForm"
+        >
+          <input type="hidden" name="form-name" value="mentee-comment" />
+          <input type="text" name="bot-field" class="honeypot" />
+
+          <div class="booking-steps">
+            <div class="booking-step active">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="menteeName">Full Name</label>
+                  <input
+                    type="text"
+                    id="menteeName"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="menteeEmail">Email</label>
+                  <input
+                    type="email"
+                    id="menteeEmail"
+                    name="email"
+                    placeholder="your@email.com"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="menteeMessage">Your Comment</label>
+                <textarea
+                  id="menteeMessage"
+                  name="message"
+                  rows="4"
+                  placeholder="Share your mentorship experience..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Upload Your Picture</label>
+                <div class="file-upload-wrapper">
+                  <input
+                    type="file"
+                    id="menteeFiles"
+                    name="attachments"
+                    accept="image/*"
+                    multiple
+                    class="file-input-hidden"
+                  />
+                  <label for="menteeFiles" class="file-upload-label">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Click to upload or drag images</span>
+                    <small>Support for PNG, JPG (Max 5MB)</small>
+                  </label>
+                </div>
+                <div class="preview-grid" id="menteePreview"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="booking-nav">
+            <div class="netlify-note-small">
+              <i class="fa-solid fa-shield-halved"></i>
+              Stored via Netlify Forms
+            </div>
+            <button type="submit" class="btn-primary">
+              Post Comment <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- BOOKING MODAL -->
+    <div id="bookingModal" class="booking-modal">
+      <div class="booking-modal-overlay" id="bookingOverlay"></div>
+      <div class="booking-modal-content">
+        <div class="booking-modal-header">
+          <h2>Book Your Mentorship</h2>
+          <button type="button" class="close-btn" id="closeBooking">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="booking-steps">
+          <!-- Step 1: Plan Selection -->
+          <div class="booking-step active" id="step1">
+            <h3>Select Your Mentorship Plan</h3>
+            <div class="plan-selection" id="planSelection">
+              <!-- Plans will be generated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Step 2: Delivery Type -->
+          <div class="booking-step" id="step2">
+            <h3>Choose Delivery Method</h3>
+            <div class="delivery-options">
+              <label class="delivery-option">
+                <input type="radio" name="delivery" value="remote" checked />
+                <span class="option-label">
+                  <i class="fa-solid fa-globe"></i>
+                  <strong>Remote</strong>
+                  <p>Online sessions via Zoom/Google Meet</p>
+                </span>
+              </label>
+              <label class="delivery-option">
+                <input type="radio" name="delivery" value="physical" />
+                <span class="option-label">
+                  <i class="fa-solid fa-map-location-dot"></i>
+                  <strong>Physical</strong>
+                  <p>In-person sessions in Ibadan</p>
+                </span>
+              </label>
+            </div>
+            <div class="physical-note hidden" id="physicalNote">
+              <i class="fa-solid fa-info-circle"></i>
+              <p>
+                Physical mentorship is available only for participants in
+                Ibadan.
+              </p>
+            </div>
+            <div
+              class="location-confirm-section hidden"
+              id="locationConfirmSection"
+            >
+              <label class="checkbox-group">
+                <input type="checkbox" id="locationConfirm" />
+                <span class="checkbox-label">
+                  I confirm that I am based in Ibadan and can attend in-person
+                  sessions
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 3: Personal Details -->
+          <div class="booking-step" id="step3">
+            <h3>Enter Your Details</h3>
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" placeholder="Your full name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number (Optional)</label>
+              <input
+                type="tel"
+                id="phone"
+                placeholder="+234 (0) 123 456 7890"
+              />
+            </div>
+          </div>
+
+          <!-- Step 4: Confirmation -->
+          <div class="booking-step" id="step4">
+            <h3>Confirm & Pay</h3>
+            <div class="confirmation-summary" id="confirmationSummary">
+              <!-- Summary will be generated by JavaScript -->
+            </div>
+            <p class="payment-info">
+              <i class="fa-solid fa-lock"></i>
+              Payments are securely processed via <strong>Paystack</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="booking-nav">
+          <button class="btn-secondary" id="prevBtn" style="display: none">
+            <i class="fa-solid fa-arrow-left"></i> Back
+          </button>
+          <button class="btn-primary" id="nextBtn">
+            Continue <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage"></div>
+      </div>
+    </div>
+
+    <!-- SUCCESS PAGE MODAL -->
+    <div id="successModal" class="success-modal">
+      <div class="success-content">
+        <div class="success-icon">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h2>Payment Successful!</h2>
+        <p class="success-message">
+          Your mentorship booking is confirmed. Check your email for next steps.
+        </p>
+        <div class="success-details" id="successDetails"></div>
+        <button class="btn-primary" id="closeSuccess">
+          Return to Portfolio
+        </button>
+      </div>
+    </div>
+
+    <!-- PROJECT MODAL -->
+    <div id="projectModal" class="modal-overlay">
+      <div class="modal-container">
+        <div class="modal-header">
+          <div class="modal-close" id="modalClose">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+        <div class="modal-body">
+          <iframe id="projectFrame" src="" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+    <script src="./mentorship.js"></script>
+  </body>
+</html>

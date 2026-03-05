@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-7.1.0-web/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #f6f7f9;
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        color: #222;
+      }
+      .page {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 22px;
+        background: #fff;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .title {
+        font-weight: 800;
+        letter-spacing: 0.3px;
+      }
+      .badge {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        border-radius: 16px;
+        background: #f0f2f5;
+        color: #555;
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 20px 40px;
+        font-size: 0.9rem;
+        color: #666;
+      }
+      .breadcrumb a {
+        color: #666;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.2s ease;
+      }
+      .breadcrumb a:hover {
+        color: #000;
+      }
+      .breadcrumb-separator {
+        color: #ccc;
+      }
+
+      .gallery-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #000000, #888888);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        margin: 0 0 20px 40px;
+        text-align: left;
+      }
+
+      .gallery-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-track {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 100px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .gallery-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .gallery-item {
+        flex: 0 0 300px;
+        height: 350px;
+        border-radius: 20px;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      .gallery-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+      .gallery-item img,
+      .gallery-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .gallery-item.loading {
+        background: linear-gradient(
+          90deg,
+          #e0e0e0 25%,
+          #f0f0f0 50%,
+          #e0e0e0 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+      .gallery-item.play-icon::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .gallery-item.play-icon:hover::after {
+        opacity: 1;
+      }
+      .gallery-item.play-icon::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .gallery-item.play-icon::before {
+        content: "▶";
+        color: #fff;
+        font-size: 40px;
+      }
+      .gallery-item.play-icon:hover::before {
+        opacity: 1;
+      }
+
+      .footer {
+        padding: 10px 18px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .hint {
+        font-size: 0.9rem;
+        color: #666;
+      }
+      .close {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+        color: #333;
+        text-decoration: none;
+      }
+
+      /* Fullscreen Modal */
+      .fullscreen-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 100;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .fullscreen-modal.active {
+        display: flex;
+        opacity: 1;
+      }
+      .fullscreen-content {
+        position: relative;
+        width: 90vw;
+        height: 90vh;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .fullscreen-content img,
+      .fullscreen-content video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .fullscreen-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        z-index: 101;
+      }
+      .fullscreen-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 768px) {
+        .gallery-track {
+          padding: 0 40px;
+          gap: 20px;
+        }
+        .gallery-item {
+          flex: 0 0 250px;
+          height: 300px;
+        }
+        .fullscreen-content {
+          width: 95vw;
+          height: 85vh;
+        }
+        .breadcrumb {
+          padding: 15px 30px;
+          font-size: 0.85rem;
+        }
+        .gallery-title {
+          font-size: 2rem;
+          margin: 0 0 15px 30px;
+        }
+      }
+      .profile-icon {
+        cursor: pointer;
+      }
+      .profile-icon img {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        box-shadow: 0 1px 25px rgba(51, 51, 51, 0.295);
+      }
+      @media (max-width: 480px) {
+        .gallery-track {
+          padding: 0 20px;
+          gap: 15px;
+        }
+        .gallery-item {
+          flex: 0 0 200px;
+          height: 250px;
+        }
+        .fullscreen-content {
+          width: 98vw;
+          height: 80vh;
+          border-radius: 8px;
+        }
+        .breadcrumb {
+          padding: 10px 20px;
+          font-size: 0.8rem;
+        }
+        .gallery-title {
+          font-size: 1.5rem;
+          margin: 0 0 10px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="pageRoot">
+      <div class="header">
+        <div class="profile-icon" onclick="window.location.href = 'index.html'">
+          <img src="./images/new-profile.png" alt="Profile" />
+        </div>
+      </div>
+      <div class="breadcrumb" id="breadcrumb"></div>
+      <h1 class="gallery-title" id="galleryTitle"></h1>
+      <div class="gallery-container">
+        <div class="gallery-track" id="galleryTrack"></div>
+      </div>
+      <div class="fullscreen-modal" id="fullscreenModal">
+        <button class="fullscreen-close" id="fullscreenClose">
+          <i class="fa-solid fa-times"></i>
+        </button>
+        <div class="fullscreen-content" id="fullscreenContent"></div>
+      </div>
+      <div class="footer">
+        <div class="hint">Scroll to browse • Click to expand</div>
+        <a class="close" href="index.html#hustles"
+          ><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a
+        >
+      </div>
+    </div>
+    <script>
+      // Get category from URL params
+      function qp(name) {
+        const u = new URL(window.location.href);
+        return u.searchParams.get(name);
+      }
+      const category = qp("category") || "";
+
+      // Gallery data
+      const galleryMap = {
+        branding: [
+          "./images/side-hustles/branding/Asset 1.png",
+          "./images/side-hustles/branding/IBONLINE.png",
+          "./images/side-hustles/branding/attechiaa.png",
+          "./images/side-hustles/branding/stenard.png",
+          "./images/side-hustles/branding/udaily.png",
+        ],
+        frontend: [
+          "./images/side-hustles/frontend/fhfc.png",
+          "./images/side-hustles/frontend/reaction-site.jpeg",
+        ],
+        motionGraphics: [
+          "./images/side-hustles/motionGraphics/MAIN.mp4",
+          "./images/side-hustles/motionGraphics/SLYZ YTUBE.mp4",
+          "./images/side-hustles/motionGraphics/VBMD SOUNDED.mp4",
+          "./images/side-hustles/motionGraphics/rot txt.mp4",
+          "./images/side-hustles/motionGraphics/tiktok actv.mp4",
+        ],
+        socialMediadesign: [
+          "./images/side-hustles/socialMediadesign/CRTFCT.png",
+          "./images/side-hustles/socialMediadesign/DCB-01.png",
+          "./images/side-hustles/socialMediadesign/OLUSHOLA ODEYINDE s.png",
+          "./images/side-hustles/socialMediadesign/VGFH.png",
+          "./images/side-hustles/socialMediadesign/bbkdd.png",
+          "./images/side-hustles/socialMediadesign/business card.png",
+          "./images/side-hustles/socialMediadesign/ml.png",
+          "./images/side-hustles/socialMediadesign/skg@4x.png",
+          "./images/side-hustles/socialMediadesign/wG.png",
+        ],
+      };
+
+      const categoryNames = {
+        branding: "Branding Design",
+        frontend: "Frontend Dev",
+        motionGraphics: "Motion Graphics",
+        socialMediadesign: "Social Media Design",
+      };
+
+      // DOM Elements
+      const galleryTrack = document.getElementById("galleryTrack");
+      const breadcrumb = document.getElementById("breadcrumb");
+      const galleryTitle = document.getElementById("galleryTitle");
+      const fullscreenModal = document.getElementById("fullscreenModal");
+      const fullscreenContent = document.getElementById("fullscreenContent");
+      const fullscreenClose = document.getElementById("fullscreenClose");
+      const pageRoot = document.getElementById("pageRoot");
+
+      // Set up breadcrumb
+      const categoryTitle = categoryNames[category] || "Gallery";
+      breadcrumb.innerHTML = `
+        <a href="index.html#hustles"><i class="fa-solid fa-arrow-left"></i> Side Hustles</a>
+        <span class="breadcrumb-separator">/</span>
+        <span>${categoryTitle}</span>
+      `;
+
+      // Set up title
+      galleryTitle.textContent = categoryTitle;
+
+      // Set up page
+      if (category) {
+        pageRoot.classList.add("gallery-" + category);
+      }
+
+      const items = galleryMap[category] || [];
+
+      function isVideo(src) {
+        return src.endsWith(".mp4");
+      }
+
+      // Track current fullscreen index
+      let currentFullscreenIndex = -1;
+
+      // Render gallery with lazy loading
+      function renderGallery() {
+        galleryTrack.innerHTML = "";
+        items.forEach((src, index) => {
+          const item = document.createElement("div");
+          item.className =
+            "gallery-item loading" + (isVideo(src) ? " play-icon" : "");
+
+          if (isVideo(src)) {
+            const video = document.createElement("video");
+            video.muted = true;
+            video.style.display = "none";
+
+            // Lazy load video - set src when about to be visible
+            const loadVideo = () => {
+              if (!video.src) {
+                video.src = src;
+                video.style.display = "block";
+                item.classList.remove("loading");
+              }
+            };
+
+            // Use Intersection Observer for lazy loading
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    loadVideo();
+                    observer.unobserve(item);
+                  }
+                });
+              },
+              { rootMargin: "100px" },
+            );
+
+            observer.observe(item);
+            item.appendChild(video);
+          } else {
+            const img = document.createElement("img");
+            img.style.display = "none";
+
+            // Lazy load image - set src when about to be visible
+            const loadImage = () => {
+              if (!img.src) {
+                img.src = src;
+                img.style.display = "block";
+                item.classList.remove("loading");
+              }
+            };
+
+            // Use Intersection Observer for lazy loading
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    loadImage();
+                    observer.unobserve(item);
+                  }
+                });
+              },
+              { rootMargin: "100px" },
+            );
+
+            observer.observe(item);
+            item.appendChild(img);
+          }
+
+          item.addEventListener("click", () => openFullscreen(index));
+          galleryTrack.appendChild(item);
+        });
+      }
+
+      // Fullscreen functions
+      function renderFullscreenContent(index) {
+        fullscreenContent.innerHTML = "";
+        const src = items[index];
+        if (isVideo(src)) {
+          const video = document.createElement("video");
+          video.src = src;
+          video.controls = true;
+          video.autoplay = true;
+          video.playsInline = true;
+          fullscreenContent.appendChild(video);
+        } else {
+          const img = document.createElement("img");
+          img.src = src;
+          fullscreenContent.appendChild(img);
+        }
+      }
+
+      function openFullscreen(index) {
+        currentFullscreenIndex = index;
+        renderFullscreenContent(index);
+        fullscreenModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeFullscreen() {
+        fullscreenModal.classList.remove("active");
+        document.body.style.overflow = "";
+        currentFullscreenIndex = -1;
+      }
+
+      function nextFullscreenItem() {
+        if (currentFullscreenIndex >= 0 && items.length > 0) {
+          currentFullscreenIndex = (currentFullscreenIndex + 1) % items.length;
+          renderFullscreenContent(currentFullscreenIndex);
+        }
+      }
+
+      function prevFullscreenItem() {
+        if (currentFullscreenIndex >= 0 && items.length > 0) {
+          currentFullscreenIndex =
+            (currentFullscreenIndex - 1 + items.length) % items.length;
+          renderFullscreenContent(currentFullscreenIndex);
+        }
+      }
+
+      fullscreenClose.addEventListener("click", closeFullscreen);
+      fullscreenModal.addEventListener("click", (e) => {
+        if (e.target === fullscreenModal) closeFullscreen();
+      });
+
+      // Keyboard navigation in fullscreen
+      document.addEventListener("keydown", (e) => {
+        if (fullscreenModal.classList.contains("active")) {
+          if (e.key === "Escape") {
+            closeFullscreen();
+          } else if (e.key === "ArrowRight") {
+            nextFullscreenItem();
+          } else if (e.key === "ArrowLeft") {
+            prevFullscreenItem();
+          }
+        }
+      });
+
+      // Swipe support for fullscreen
+      let fullscreenTouchStartX = 0;
+      fullscreenModal.addEventListener(
+        "touchstart",
+        (e) => {
+          fullscreenTouchStartX = e.touches[0].clientX;
+        },
+        { passive: true },
+      );
+
+      fullscreenModal.addEventListener(
+        "touchend",
+        (e) => {
+          const touchEndX = e.changedTouches[0].clientX;
+          const diff = fullscreenTouchStartX - touchEndX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+              nextFullscreenItem();
+            } else {
+              prevFullscreenItem();
+            }
+          }
+        },
+        { passive: true },
+      );
+
+      // Mouse drag support for fullscreen
+      let fullscreenMouseDown = false;
+      let fullscreenMouseStartX = 0;
+      fullscreenContent.addEventListener("mousedown", (e) => {
+        fullscreenMouseDown = true;
+        fullscreenMouseStartX = e.clientX;
+      });
+
+      document.addEventListener("mouseup", () => {
+        fullscreenMouseDown = false;
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (!fullscreenMouseDown) return;
+        const diff = fullscreenMouseStartX - e.clientX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            nextFullscreenItem();
+          } else {
+            prevFullscreenItem();
+          }
+          fullscreenMouseDown = false;
+        }
+      });
+
+      // Smooth scroll drag for track
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      galleryTrack.addEventListener("mousedown", (e) => {
+        isDown = true;
+        startX = e.pageX - galleryTrack.offsetLeft;
+        scrollLeft = galleryTrack.scrollLeft;
+      });
+
+      document.addEventListener("mouseleave", () => {
+        isDown = false;
+      });
+      document.addEventListener("mouseup", () => {
+        isDown = false;
+      });
+
+      galleryTrack.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - galleryTrack.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        galleryTrack.scrollLeft = scrollLeft - walk;
+      });
+
+      // Touch swipe
+      let touchStartX = 0;
+      galleryTrack.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.touches[0].clientX;
+          isDown = true;
+          scrollLeft = galleryTrack.scrollLeft;
+        },
+        { passive: true },
+      );
+
+      galleryTrack.addEventListener(
+        "touchmove",
+        (e) => {
+          if (!isDown) return;
+          const x = e.touches[0].clientX;
+          const walk = (x - touchStartX) * 1.5;
+          galleryTrack.scrollLeft = scrollLeft - walk;
+        },
+        { passive: true },
+      );
+
+      galleryTrack.addEventListener(
+        "touchend",
+        () => {
+          isDown = false;
+        },
+        { passive: true },
+      );
+
+      // Render on load
+      if (items.length === 0) {
+        galleryTrack.innerHTML =
+          '<div style="width: 100%; text-align: center; font-weight: 700; color: #999;">Gallery coming soon</div>';
+      } else {
+        renderGallery();
+      }
+    </script>
+  </body>
+</html>
