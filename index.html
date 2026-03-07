@@ -335,6 +335,25 @@
           <img src="./Logos/lcs.png" alt="Brand 5" />
         </div>
       </div>
+
+      <!-- Cheers Section -->
+      <div class="cheers-section">
+        <p class="cheers-msg">
+          Yaay! cheers for taking your time to reach here.
+        </p>
+        <div class="cheers-actions">
+          <button id="cheerBtn" class="cheer-btn">
+            <i class="fa-solid fa-hand-pointer hand-icon"></i>
+            <span>Click me</span>
+          </button>
+          <div class="cheer-count-wrapper">
+            <i class="fa-solid fa-star star-icon"></i>
+            <span id="cheerCount" class="cheer-count">0</span>
+            <span class="cheer-literal">it counts, Literally</span>
+          </div>
+        </div>
+      </div>
+
       <footer>
         <div class="social-icons">
           <a href="https://x.com/Pamilerinadeto2" class="icon" target="_blank"
@@ -373,35 +392,18 @@
         <h1 class="pamilerin">Side Hustles.</h1>
         <div class="description">
           Turning creative skills into professional services. High-quality
-          execution across design and development.
+          execution across design and development. <br />
+          Or I might just be a freelancer, who adapts several other skills to
+          get the paycheck.
+          <i
+            class="fa-solid fa-circle-check"
+            style="color: #2ecc71; margin-left: 5px; font-size: 0.9em"
+          ></i>
         </div>
       </div>
 
       <div class="hustle-container">
         <div class="hustle-track">
-          <!-- Motion Graphics Card -->
-          <div class="hustle-card motion">
-            <a href="gallery.html?category=motionGraphics" class="gallery-link">
-              <i class="fa-solid fa-images"></i>
-              <span>View Gallery</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-            <div class="hustle-content">
-              <div class="hustle-tag">Creative</div>
-              <h3 class="hustle-title">Motion Graphics</h3>
-              <p class="hustle-desc">
-                Bringing stories to life through fluid animations and dynamic
-                visual storytelling.
-              </p>
-              <ul class="hustle-features">
-                <li>• Logo Animation</li>
-                <li>• Explainer Videos</li>
-                <li>• UI Motion</li>
-              </ul>
-            </div>
-            <div class="hustle-overlay"></div>
-          </div>
-
           <!-- Frontend Dev Card -->
           <div class="hustle-card frontend">
             <a href="gallery.html?category=frontend" class="gallery-link">
@@ -413,13 +415,41 @@
               <div class="hustle-tag">Development</div>
               <h3 class="hustle-title">Frontend Dev</h3>
               <p class="hustle-desc">
-                Building responsive, high-performance web interfaces with modern
-                frameworks.
+                Designing some portfolios for people struggling with personal
+                presentation, and some other beginner Nextjs Shi.
               </p>
               <ul class="hustle-features">
                 <li>• React/Next.js</li>
                 <li>• Interactive UI</li>
                 <li>• Performance Opt.</li>
+              </ul>
+            </div>
+            <div class="hustle-overlay"></div>
+          </div>
+
+          <!-- Motion Graphics Card -->
+          <div class="hustle-card motion">
+            <a href="gallery.html?category=motionGraphics" class="gallery-link">
+              <i class="fa-solid fa-images"></i>
+              <span>View Gallery</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <div class="hustle-content">
+              <div class="hustle-tag">Creative</div>
+              <h3 class="hustle-title">Motion Graphics</h3>
+              <p class="hustle-desc">
+                I try to do some explainer videos, logo animations and video
+                captioning... which is really not paying off for me.
+              </p>
+              <div class="pc-status-popup">
+                <i class="fa-solid fa-laptop-code"></i>
+                Well I have high potentials, but my PC is currently not suitable
+                for Motion Graphics.
+              </div>
+              <ul class="hustle-features">
+                <li>• Logo Animation</li>
+                <li>• Explainer Videos</li>
+                <li>• UI Motion</li>
               </ul>
             </div>
             <div class="hustle-overlay"></div>
@@ -462,8 +492,8 @@
               <div class="hustle-tag">Marketing</div>
               <h3 class="hustle-title">Social Media Design</h3>
               <p class="hustle-desc">
-                Eye-catching fliers and content designed to stop the scroll and
-                engage.
+                Some urgent hit and run social media posts, and ad creatives
+                design.
               </p>
               <ul class="hustle-features">
                 <li>• Instagram Fliers</li>
@@ -478,13 +508,13 @@
           <div class="hustle-card wordpress">
             <div class="hustle-content">
               <div class="hustle-tag">CMS</div>
-              <h3 class="hustle-title">WordPress Dev</h3>
+              <h3 class="hustle-title">WordPress</h3>
               <p class="hustle-desc">
-                Scalable and easy-to-manage websites tailored to your business
-                needs.
+                Helping whatsapp badies create fast e-commerce store, instead of
+                flooding whatsapp status with 1 million product images.
               </p>
               <ul class="hustle-features">
-                <li>• Custom Themes</li>
+                <li>• Web Store</li>
                 <li>• E-commerce</li>
                 <li>• SEO Ready</li>
               </ul>
@@ -498,12 +528,14 @@
               <div class="hustle-tag">Assets</div>
               <h3 class="hustle-title">Image Optimization</h3>
               <p class="hustle-desc">
-                Fast and precise background removal, resizing, and bulk editing.
+                Bulk image resizing, background removal, and editing for
+                E-commerce websites like SwotNg.
               </p>
               <ul class="hustle-features">
                 <li>• Background Removal</li>
                 <li>• Bulk Resizing</li>
                 <li>• Color Grading</li>
+                <li>Over 7k Images worked on</li>
               </ul>
             </div>
             <div class="hustle-overlay"></div>
@@ -816,6 +848,12 @@
         </div>
       </div>
     </div>
+
+    <!-- FLOATING RESOURCES BUTTON -->
+    <a href="resources.html" class="floating-resources">
+      <i class="fa-solid fa-folder-open"></i>
+      <span>My Resources</span>
+    </a>
 
     <script src="./index.js"></script>
     <script src="./mentorship.js"></script>

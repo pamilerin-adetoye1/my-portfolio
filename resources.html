@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Resources - Pamilerin</title>
+    <link rel="stylesheet" href="./olivierifrah.css" />
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-7.1.0-web/css/all.min.css"
+    />
+    <style>
+      body {
+        background: #f8f9fa;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+      .resources-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: #666;
+        font-weight: 600;
+        margin-bottom: 30px;
+        transition: color 0.3s;
+      }
+      .back-btn:hover {
+        color: #000;
+      }
+      .header {
+        margin-bottom: 40px;
+      }
+      .header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+      .header p {
+        color: #666;
+        font-size: 1.1rem;
+      }
+      .project-list {
+        display: grid;
+        gap: 20px;
+      }
+      .project-item {
+        background: #fff;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        border: 1px solid #f0f0f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: transform 0.3s;
+      }
+      .project-item:hover {
+        transform: translateY(-5px);
+        border-color: #2ecc71;
+      }
+      .project-info h3 {
+        margin: 0 0 8px 0;
+        font-size: 1.3rem;
+      }
+      .project-info p {
+        margin: 0;
+        color: #777;
+        font-size: 0.95rem;
+      }
+      .project-actions {
+        display: flex;
+        gap: 12px;
+      }
+      .btn {
+        padding: 10px 18px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
+      }
+      .btn-clone {
+        background: #000;
+        color: #fff;
+      }
+      .btn-clone:hover {
+        background: #333;
+        transform: scale(1.05);
+      }
+      @media (max-width: 600px) {
+        .project-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 20px;
+        }
+        .project-actions {
+          width: 100%;
+        }
+        .btn {
+          flex: 1;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="resources-container">
+      <a href="index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+      </a>
+      
+      <div class="header">
+        <h1>My Resources</h1>
+        <p>Feel free to clone and explore some of my open-source projects. Happy coding! More to come...</p>
+      </div>
+
+      <div class="project-list">
+        <!-- Reactions -->
+        <div class="project-item">
+          <div class="project-info">
+            <h3>Reactions App</h3>
+            <p>An interactive reactions system for modern web apps.</p>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/pamilerin-adetoye1/reactions" class="btn btn-clone" target="_blank">
+              <i class="fa-brands fa-github"></i> Clone Project
+            </a>
+          </div>
+        </div>
+
+        <!-- Portfolio -->
+        <div class="project-item">
+          <div class="project-info">
+            <h3>My Portfolio</h3>
+            <p>The source code for this portfolio website.</p>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/pamilerin-adetoye1/my-portfolio" class="btn btn-clone" target="_blank">
+              <i class="fa-brands fa-github"></i> Clone Project
+            </a>
+          </div>
+        </div>
+
+        <!-- Speed Test -->
+        <div class="project-item">
+          <div class="project-info">
+            <h3>SPEED-TEST-APP</h3>
+            <p>A fast and reliable network speed testing application.</p>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/pamilerin-adetoye1/SPEED-TEST-APP" class="btn btn-clone" target="_blank">
+              <i class="fa-brands fa-github"></i> Clone Project
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

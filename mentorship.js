@@ -8,16 +8,42 @@ const PAYSTACK_PUBLIC_KEY = "pk_live_e8ebafb1d34eb05288dcd8292641187d3b5e60ff"; 
 // MENTORSHIP PLANS DATA
 const mentorshipPlans = [
   {
+    id: "motion-graphics",
+    title: "Motion Graphics",
+    duration: "3 Months",
+    schedule: "3 Days Per Week",
+    price: 60000,
+    icons: [
+      "https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg",
+      "./images/mentorship/Ciname 4 D.jfif",
+    ],
+    includes: [
+      "After Effects basics",
+      "Keyframe animation",
+      "Visual effects (VFX)",
+      "Audio Effects",
+      "Shapes Animation",
+      "Motion design principles",
+    ],
+    featured: false,
+  },
+  {
     id: "brand-identity",
     title: "Brand & Identity Design",
     duration: "2 Months",
     schedule: "3 Days Per Week",
     price: 20000,
-    icon: "🎨",
+    icons: [
+      "https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg",
+      "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg",
+    ],
     includes: [
       "Logo systems",
       "Brand strategy basics",
       "Identity systems",
+      "Typography",
+      "Mockups",
+      "Color theory",
       "Visual direction",
     ],
     featured: false,
@@ -28,8 +54,20 @@ const mentorshipPlans = [
     duration: "3 Months",
     schedule: "3 Days Per Week",
     price: 50000,
-    icon: "💻",
-    includes: ["HTML", "CSS", "React fundamentals", "Best practices"],
+    icons: [
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+      "./images/mentorship/nextjs.jpg",
+    ],
+    includes: [
+      "HTML5 & CSS3",
+      "JavaScript (ES6+)",
+      "React Fundamentals",
+      "Next.js Basics",
+      "Best Practices",
+    ],
     featured: true,
   },
   {
@@ -38,7 +76,10 @@ const mentorshipPlans = [
     duration: "2 Months",
     schedule: "3 Days Per Week",
     price: 50000,
-    icon: "🎯",
+    icons: [
+      "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg",
+      "./images/mentorship/balsamiq.png",
+    ],
     includes: [
       "Figma",
       "Balsamiq",
@@ -54,13 +95,62 @@ const mentorshipPlans = [
     duration: "2 Months",
     schedule: "3 Days Per Week",
     price: 50000,
-    icon: "🔐",
+    icons: [
+      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kalilinux/kalilinux-original.svg",
+    ],
     includes: [
       "Networking Basics",
       "System vulnerabilities",
+      "Kali Linux",
       "Ethical penetration principles",
     ],
     featured: false,
+  },
+  {
+    id: "virtual-assistance",
+    title: "Virtual Assistance",
+    duration: "2 Months",
+    schedule: "3 Days Per Week",
+    price: 80000,
+    icons: [
+      "https://www.vectorlogo.zone/logos/google_workspace/google_workspace-icon.svg",
+      "https://www.vectorlogo.zone/logos/slack/slack-icon.svg",
+      "https://www.vectorlogo.zone/logos/trello/trello-icon.svg",
+      "https://www.vectorlogo.zone/logos/canva/canva-icon.svg",
+    ],
+    includes: [
+      "Administrative Support",
+      "Calendar Management",
+      "Email Organization",
+      "Digital Tool Proficiency",
+      "Client Communication",
+      "Task Prioritization",
+    ],
+    featured: false,
+    affiliated: true,
+  },
+  {
+    id: "data-science",
+    title: "Data Science",
+    duration: "3 Months",
+    schedule: "3 Days Per Week",
+    price: 150000,
+    icons: [
+      "https://www.vectorlogo.zone/logos/python/python-icon.svg",
+      "https://www.vectorlogo.zone/logos/pandas/pandas-icon.svg",
+      "https://www.vectorlogo.zone/logos/jupyter/jupyter-icon.svg",
+      "https://www.vectorlogo.zone/logos/tableau/tableau-icon.svg",
+    ],
+    includes: [
+      "Python for Data Science",
+      "Data Cleaning & Analysis",
+      "Statistical Modeling",
+      "Data Visualization",
+      "Machine Learning Basics",
+      "SQL Fundamentals",
+    ],
+    featured: false,
+    affiliated: true,
   },
   {
     id: "sales-mentorship",
@@ -68,7 +158,7 @@ const mentorshipPlans = [
     duration: "Flexible",
     schedule: "2 Days Per Week",
     price: 50000,
-    icon: "📈",
+    icons: ["https://cdn-icons-png.flaticon.com/512/3121/3121809.png"],
     includes: [
       "Closing techniques",
       "Digital sales systems",
@@ -81,11 +171,11 @@ const mentorshipPlans = [
 // TESTIMONIALS DATA
 const testimonials = [
   {
-    name: "Chioma Okafor",
-    role: "Brand Designer",
+    name: "Tunde Adeyemi",
+    role: "Junior Frontend Developer",
     message:
-      "The Brand & Identity Design mentorship gave me the framework I needed. My logo system work is now being featured by clients. This mentorship changed everything for me.",
-    initials: "CO",
+      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
+    initials: "TA",
   },
   {
     name: "Tunde Adeyemi",
@@ -95,32 +185,32 @@ const testimonials = [
     initials: "TA",
   },
   {
-    name: "Zainab Hassan",
-    role: "Product Designer",
+    name: "Tunde Adeyemi",
+    role: "Junior Frontend Developer",
     message:
-      "The UI/UX Design mentorship taught me user research and prototyping in ways my online courses never could. My design portfolio tripled in quality. Absolutely worth every naira.",
-    initials: "ZH",
+      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
+    initials: "TA",
   },
   {
-    name: "Emeka Okafor",
-    role: "Aspiring Ethical Hacker",
+    name: "Tunde Adeyemi",
+    role: "Junior Frontend Developer",
     message:
-      "The Ethical Hacking mentorship was intense but incredibly rewarding. I now understand network security at a level that would take me years to learn alone. Highly technical and practical.",
-    initials: "EO",
+      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
+    initials: "TA",
   },
   {
-    name: "Jessica Adeyemi",
-    role: "Sales Professional",
+    name: "Tunde Adeyemi",
+    role: "Junior Frontend Developer",
     message:
-      "The Sales Mentorship unlocked my closing techniques. My conversion rate improved by 40% within the first month of applying what I learned. This is real, actionable knowledge.",
-    initials: "JA",
+      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
+    initials: "TA",
   },
   {
-    name: "David Okonkwo",
-    role: "Full Stack Developer",
+    name: "Tunde Adeyemi",
+    role: "Junior Frontend Developer",
     message:
-      "As someone transitioning from pure backend to full stack, this mentorship fast-tracked my learning. The real-world project examples were invaluable. Best decision I made for my career.",
-    initials: "DO",
+      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
+    initials: "TA",
   },
 ];
 
@@ -189,8 +279,24 @@ function renderMentorshipCards() {
     card.className = `mentorship-card ${plan.featured ? "featured" : ""}`;
     card.innerHTML = `
       ${plan.featured ? '<span class="card-badge">Most Popular</span>' : ""}
+      ${
+        plan.affiliated
+          ? `
+        <div class="affiliated-tag">
+          <img src="./Logos/craftudy.png" alt="Craftudy" class="affiliated-logo">
+          <span>Affiliated with Craftudy</span>
+        </div>`
+          : ""
+      }
       <div class="card-header">
-        <div class="card-icon">${plan.icon}</div>
+        <div class="card-icons">
+          ${plan.icons
+            .map(
+              (icon) =>
+                `<div class="tool-logo-box"><img src="${icon}" alt="Tool logo" class="tool-logo" referrerpolicy="no-referrer"></div>`,
+            )
+            .join("")}
+        </div>
         <h3 class="card-title">${plan.title}</h3>
         <p class="card-subtitle">${plan.duration}</p>
       </div>

@@ -279,3 +279,53 @@ document.addEventListener("keydown", (e) => {
 
 // Expose openProject to global scope for onclick handlers
 window.openProject = openProject;
+
+// === Cheers Counter Logic ===
+const cheerBtn = document.getElementById("cheerBtn");
+const cheerCountSpan = document.getElementById("cheerCount");
+const CHEER_API_URL = "https://api.counterapi.dev/v1/pamilerin-portfolio/cheers";
+
+async function getCheers() {
+  try {
+    const response = await fetch(CHEER_API_URL);
+    const data = await response.json();
+    if (data.count !== undefined) {
+      cheerCountSpan.innerText = data.count.toLocaleString();
+    }
+  } catch (error) {
+    console.error("Error fetching cheers:", error);
+    // Fallback to a random-ish number if API fails
+    cheerCountSpan.innerText = "1,240";
+  }
+}
+
+async function hitCheer() {
+  try {
+    // Add temporary animation class
+    cheerBtn.classList.add("clicking");
+    setTimeout(() => cheerBtn.classList.remove("clicking"), 200);
+
+    const response = await fetch(`${CHEER_API_URL}/up`);
+    const data = await response.json();
+    if (data.count !== undefined) {
+      cheerCountSpan.innerText = data.count.toLocaleString();
+      
+      // Cool success animation for the star
+      const star = document.querySelector(".star-icon");
+      star.style.animation = "none";
+      void star.offsetWidth; // trigger reflow
+      star.style.animation = "starPulse 0.5s ease-in-out 3";
+    }
+  } catch (error) {
+    console.error("Error hitting cheer:", error);
+    // Local increment fallback
+    const current = parseInt(cheerCountSpan.innerText.replace(/,/g, "")) || 0;
+    cheerCountSpan.innerText = (current + 1).toLocaleString();
+  }
+}
+
+if (cheerBtn) {
+  cheerBtn.addEventListener("click", hitCheer);
+  // Initial load
+  getCheers();
+}
