@@ -283,7 +283,8 @@ window.openProject = openProject;
 // === Cheers Counter Logic ===
 const cheerBtn = document.getElementById("cheerBtn");
 const cheerCountSpan = document.getElementById("cheerCount");
-const CHEER_API_URL = "https://api.counterapi.dev/v1/pamilerin-portfolio/cheers";
+const CHEER_API_URL =
+  "https://api.counterapi.dev/v1/pamilerin-portfolio/cheers";
 
 async function getCheers() {
   try {
@@ -309,7 +310,7 @@ async function hitCheer() {
     const data = await response.json();
     if (data.count !== undefined) {
       cheerCountSpan.innerText = data.count.toLocaleString();
-      
+
       // Cool success animation for the star
       const star = document.querySelector(".star-icon");
       star.style.animation = "none";
@@ -329,3 +330,41 @@ if (cheerBtn) {
   // Initial load
   getCheers();
 }
+
+// === Image Lightbox Functionality ===
+const lightbox = document.getElementById("imageLightbox");
+const lightboxContent = document.querySelector(".lightbox-content");
+const lightboxClose = document.querySelector(".lightbox-close");
+
+// Get all mockup images
+const mockupImages = document.querySelectorAll(".mockup img");
+
+mockupImages.forEach((img) => {
+  img.addEventListener("click", function () {
+    lightboxContent.src = this.src;
+    lightbox.classList.add("active");
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+  });
+});
+
+// Close lightbox when clicking the X
+lightboxClose.addEventListener("click", function () {
+  lightbox.classList.remove("active");
+  document.body.style.overflow = "auto"; // Restore scrolling
+});
+
+// Close lightbox when clicking outside the image
+lightbox.addEventListener("click", function (e) {
+  if (e.target === lightbox) {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "auto"; // Restore scrolling
+  }
+});
+
+// Close lightbox with Escape key
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && lightbox.classList.contains("active")) {
+    lightbox.classList.remove("active");
+    document.body.style.overflow = "auto"; // Restore scrolling
+  }
+});

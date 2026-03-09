@@ -113,7 +113,7 @@ const mentorshipPlans = [
     schedule: "3 Days Per Week",
     price: 80000,
     icons: [
-      "https://www.vectorlogo.zone/logos/google_workspace/google_workspace-icon.svg",
+      "https://www.vectorlogo.zone/logos/google_gsuite/google_gsuite-icon.svg",
       "https://www.vectorlogo.zone/logos/slack/slack-icon.svg",
       "https://www.vectorlogo.zone/logos/trello/trello-icon.svg",
       "https://www.vectorlogo.zone/logos/canva/canva-icon.svg",
@@ -137,9 +137,9 @@ const mentorshipPlans = [
     price: 150000,
     icons: [
       "https://www.vectorlogo.zone/logos/python/python-icon.svg",
-      "https://www.vectorlogo.zone/logos/pandas/pandas-icon.svg",
+      "./images/pandas-icon.svg",
       "https://www.vectorlogo.zone/logos/jupyter/jupyter-icon.svg",
-      "https://www.vectorlogo.zone/logos/tableau/tableau-icon.svg",
+      "./images/tableau-icon.svg",
     ],
     includes: [
       "Python for Data Science",
@@ -293,7 +293,7 @@ function renderMentorshipCards() {
           ${plan.icons
             .map(
               (icon) =>
-                `<div class="tool-logo-box"><img src="${icon}" alt="Tool logo" class="tool-logo" referrerpolicy="no-referrer"></div>`,
+                `<div class="tool-logo-box"><img src="${icon}" alt="Tool logo" class="tool-logo" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>`,
             )
             .join("")}
         </div>
