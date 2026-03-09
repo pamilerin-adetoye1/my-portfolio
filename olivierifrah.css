@@ -1152,18 +1152,7 @@ footer {
 
 @media (max-width: 768px) {
   .pc-status-popup {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-    width: 100%;
-    opacity: 1;
-    background: rgba(46, 204, 113, 0.1);
-    color: #444;
-    box-shadow: none;
-    margin: 15px 0;
-    padding: 15px;
-    border: 1px solid rgba(46, 204, 113, 0.2);
+    display: none;
   }
 
   .pc-status-popup::after {
