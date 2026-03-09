@@ -283,8 +283,7 @@ window.openProject = openProject;
 // === Cheers Counter Logic ===
 const cheerBtn = document.getElementById("cheerBtn");
 const cheerCountSpan = document.getElementById("cheerCount");
-const CHEER_API_URL =
-  "https://api.counterapi.dev/v1/pamilerin-portfolio/cheers";
+const CHEER_API_URL = "/.netlify/functions/cheers";
 
 async function getCheers() {
   try {
@@ -306,7 +305,12 @@ async function hitCheer() {
     cheerBtn.classList.add("clicking");
     setTimeout(() => cheerBtn.classList.remove("clicking"), 200);
 
-    const response = await fetch(`${CHEER_API_URL}/up`);
+    const response = await fetch(CHEER_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
     if (data.count !== undefined) {
       cheerCountSpan.innerText = data.count.toLocaleString();

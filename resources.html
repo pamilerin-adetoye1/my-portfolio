@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -52,7 +52,7 @@
         background: #fff;
         padding: 25px;
         border-radius: 16px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         border: 1px solid #f0f0f0;
         display: flex;
         justify-content: space-between;
@@ -124,6 +124,188 @@
           justify-content: center;
         }
       }
+
+      /* Email Modal Styles */
+      .email-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 999;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .email-modal-overlay.active {
+        display: block;
+      }
+
+      .email-modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .email-modal.active {
+        display: block;
+      }
+
+      .email-modal-content {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .email-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #999;
+        transition: color 0.3s;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .email-modal-close:hover {
+        color: #000;
+      }
+
+      .email-modal-content h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 0 0 0.75rem 0;
+      }
+
+      .email-modal-content p {
+        color: #666;
+        font-size: 1rem;
+        margin: 0 0 1.5rem 0;
+        line-height: 1.5;
+      }
+
+      .email-form-group {
+        margin-bottom: 2rem;
+      }
+
+      .email-form-group input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #f0f0f0;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      .email-form-group input:focus {
+        outline: none;
+        border-color: #2ecc71;
+        background: #f0fff4;
+        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+      }
+
+      .email-modal-actions {
+        display: flex;
+        gap: 12px;
+      }
+
+      #emailConfirmBtn {
+        flex: 1;
+        background: #2ecc71;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      #emailConfirmBtn:hover {
+        background: #27ae60;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3);
+      }
+
+      #emailConfirmBtn:active {
+        transform: translateY(0);
+      }
+
+      #emailCancelBtn {
+        flex: 1;
+        background: #f5f5f5;
+        color: #1a1a1a;
+        padding: 12px 20px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      #emailCancelBtn:hover {
+        background: #e8e8e8;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -45%);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .email-modal-content {
+          padding: 2rem;
+          width: 95%;
+        }
+
+        .email-modal-content h2 {
+          font-size: 1.5rem;
+        }
+
+        .email-modal-actions {
+          flex-direction: column;
+        }
+      }
     </style>
     <script src="https://js.paystack.co/v1/inline.js"></script>
   </head>
@@ -132,10 +314,13 @@
       <a href="index.html" class="back-btn">
         <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
       </a>
-      
+
       <div class="header">
         <h1>My Resources</h1>
-        <p>Explore my projects and resources. Some high-value assets are available for a small fee.</p>
+        <p>
+          Explore my projects and resources. Some high-value assets are
+          available for a small fee.
+        </p>
       </div>
 
       <div class="project-list">
@@ -146,7 +331,11 @@
             <p>An interactive reactions system for modern web apps.</p>
           </div>
           <div class="project-actions">
-            <a href="https://github.com/pamilerin-adetoye1/reactions" class="btn btn-clone" target="_blank">
+            <a
+              href="https://github.com/pamilerin-adetoye1/reactions"
+              class="btn btn-clone"
+              target="_blank"
+            >
               <i class="fa-brands fa-github"></i> Clone Project
             </a>
           </div>
@@ -156,7 +345,10 @@
         <div class="project-item">
           <div class="project-info">
             <h3>My Portfolio Source Code</h3>
-            <p>The complete source code for this portfolio website. <span class="price-tag">₦2,000</span></p>
+            <p>
+              The complete source code for this portfolio website.
+              <span class="price-tag">₦2,000</span>
+            </p>
           </div>
           <div class="project-actions">
             <button onclick="payForResource('portfolio')" class="btn btn-paid">
@@ -172,7 +364,11 @@
             <p>A fast and reliable network speed testing application.</p>
           </div>
           <div class="project-actions">
-            <a href="https://github.com/pamilerin-adetoye1/SPEED-TEST-APP" class="btn btn-clone" target="_blank">
+            <a
+              href="https://github.com/pamilerin-adetoye1/SPEED-TEST-APP"
+              class="btn btn-clone"
+              target="_blank"
+            >
               <i class="fa-brands fa-github"></i> Clone Project
             </a>
           </div>
@@ -180,32 +376,115 @@
       </div>
     </div>
 
+    <!-- Email Modal for Payment -->
+    <div id="emailModal" class="email-modal">
+      <div class="email-modal-content">
+        <span class="email-modal-close">&times;</span>
+        <h2>Enter Your Email</h2>
+        <p>We'll send you the repository link after payment is confirmed.</p>
+        <div class="email-form-group">
+          <input
+            type="email"
+            id="emailInput"
+            placeholder="your.email@example.com"
+            autocomplete="email"
+          />
+        </div>
+        <div class="email-modal-actions">
+          <button id="emailConfirmBtn" class="btn btn-paid">
+            <i class="fa-solid fa-arrow-right"></i> Continue to Payment
+          </button>
+          <button id="emailCancelBtn" class="btn btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <div id="emailModalOverlay" class="email-modal-overlay"></div>
+
     <script>
-      const PAYSTACK_PUBLIC_KEY = "pk_live_e8ebafb1d34eb05288dcd8292641187d3b5e60ff";
-      
-      function payForResource(resourceId) {
-        let email = prompt("Please enter your email to receive the repository link after payment:");
-        if (!email || !email.includes('@')) {
-          alert("A valid email is required to receive the resource.");
+      const PAYSTACK_PUBLIC_KEY =
+        "pk_live_e8ebafb1d34eb05288dcd8292641187d3b5e60ff";
+      const emailModal = document.getElementById("emailModal");
+      const emailModalOverlay = document.getElementById("emailModalOverlay");
+      const emailInput = document.getElementById("emailInput");
+      const emailConfirmBtn = document.getElementById("emailConfirmBtn");
+      const emailCancelBtn = document.getElementById("emailCancelBtn");
+      const emailModalClose = document.querySelector(".email-modal-close");
+
+      let currentResourceId = null;
+
+      function openEmailModal(resourceId) {
+        currentResourceId = resourceId;
+        emailInput.value = "";
+        emailInput.focus();
+        emailModal.classList.add("active");
+        emailModalOverlay.classList.add("active");
+      }
+
+      function closeEmailModal() {
+        emailModal.classList.remove("active");
+        emailModalOverlay.classList.remove("active");
+        currentResourceId = null;
+      }
+
+      function proceedToPayment() {
+        const email = emailInput.value.trim();
+        if (!email) {
+          alert("Please enter your email address.");
+          emailInput.focus();
+          return;
+        }
+        if (!email.includes("@")) {
+          alert("Please enter a valid email address.");
+          emailInput.focus();
           return;
         }
 
+        closeEmailModal();
+        processPayment(email);
+      }
+
+      function processPayment(email) {
         const handler = PaystackPop.setup({
           key: PAYSTACK_PUBLIC_KEY,
           email: email,
           amount: 2000 * 100, // ₦2,000 in kobo
           currency: "NGN",
-          ref: 'RES_' + Math.floor((Math.random() * 1000000000) + 1),
-          callback: function(response) {
-            alert("Payment successful! Reference: " + response.reference + "\n\nA confirmation email and the GitHub repository link will be sent to " + email + " shortly.");
-            // In a real app, you would verify the transaction on the backend and trigger the email
-            console.log("Payment successful for " + resourceId, response);
+          ref: "RES_" + Math.floor(Math.random() * 1000000000 + 1),
+          callback: function (response) {
+            alert(
+              "Payment successful! Reference: " +
+                response.reference +
+                "\n\nA confirmation email and the GitHub repository link will be sent to " +
+                email +
+                " shortly.",
+            );
+            console.log(
+              "Payment successful for " + currentResourceId,
+              response,
+            );
           },
-          onClose: function() {
+          onClose: function () {
             alert("Payment cancelled.");
-          }
+          },
         });
         handler.openIframe();
+      }
+
+      // Event listeners
+      emailConfirmBtn.addEventListener("click", proceedToPayment);
+      emailCancelBtn.addEventListener("click", closeEmailModal);
+      emailModalClose.addEventListener("click", closeEmailModal);
+      emailModalOverlay.addEventListener("click", closeEmailModal);
+
+      // Allow Enter key to submit
+      emailInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          proceedToPayment();
+        }
+      });
+
+      function payForResource(resourceId) {
+        openEmailModal(resourceId);
       }
     </script>
   </body>

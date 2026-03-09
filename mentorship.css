@@ -185,24 +185,32 @@
 
 @media (max-width: 768px) {
   .mentorship-grid {
-    padding: 3rem 1rem;
+    padding: 3rem 1rem !important;
     gap: 1.5rem;
     grid-template-columns: 1fr;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .mentorship-card {
     padding: 1.5rem;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
 
 @media (max-width: 480px) {
   .mentorship-grid {
-    padding: 2rem 0.5rem;
-    gap: 1rem;
+    padding: 2rem 0.5rem !important;
+    gap: 1rem !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
   }
 
   .mentorship-card {
     padding: 1.25rem;
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   .card-title {
@@ -1483,5 +1491,24 @@
 
   .booking-steps {
     padding: 1.5rem;
+  }
+
+  /* CTA Button Mobile Overrides */
+  .hero-cta {
+    padding: 14px 28px !important;
+    font-size: 0.95rem !important;
+    gap: 8px !important;
+  }
+
+  .hero-cta i {
+    font-size: 1rem !important;
+  }
+
+  .mentorship-hero h1 {
+    font-size: 2rem !important;
+  }
+
+  .hero-tagline {
+    font-size: 0.95rem !important;
   }
 }
