@@ -168,52 +168,6 @@ const mentorshipPlans = [
   },
 ];
 
-// TESTIMONIALS DATA
-const testimonials = [
-  {
-    name: "Tunde Adeyemi",
-    role: "Junior Frontend Developer",
-    message:
-      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
-    initials: "TA",
-  },
-  {
-    name: "Tunde Adeyemi",
-    role: "Junior Frontend Developer",
-    message:
-      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
-    initials: "TA",
-  },
-  {
-    name: "Tunde Adeyemi",
-    role: "Junior Frontend Developer",
-    message:
-      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
-    initials: "TA",
-  },
-  {
-    name: "Tunde Adeyemi",
-    role: "Junior Frontend Developer",
-    message:
-      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
-    initials: "TA",
-  },
-  {
-    name: "Tunde Adeyemi",
-    role: "Junior Frontend Developer",
-    message:
-      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
-    initials: "TA",
-  },
-  {
-    name: "Tunde Adeyemi",
-    role: "Junior Frontend Developer",
-    message:
-      "Pamilerin's Frontend Development program went beyond theory. I built 3 production-ready React projects during the mentorship and landed a job 2 weeks after completion!",
-    initials: "TA",
-  },
-];
-
 // FAQ DATA
 const faqItems = [
   {
@@ -251,12 +205,6 @@ function initMentorshipPage() {
     "✅ Rendered " +
       document.querySelectorAll(".mentorship-card").length +
       " mentorship cards",
-  );
-  renderTestimonials();
-  console.log(
-    "✅ Rendered " +
-      document.querySelectorAll(".testimonial-card").length +
-      " testimonials",
   );
   loadMenteeSubmissions();
   renderFAQ();
@@ -327,32 +275,6 @@ function renderMentorshipCards() {
       </button>
     `;
     grid.appendChild(card);
-  });
-}
-
-// === RENDER TESTIMONIALS ===
-function renderTestimonials() {
-  const container = document.getElementById("testimonialsGrid");
-  if (!container) {
-    console.warn("Testimonials container not found");
-    return;
-  }
-  container.innerHTML = "";
-
-  testimonials.forEach((testimonial) => {
-    const card = document.createElement("div");
-    card.className = "testimonial-card";
-    card.innerHTML = `
-      <div class="testimonial-header">
-        <div class="testimonial-avatar">${testimonial.initials}</div>
-        <div class="testimonial-info">
-          <h4>${testimonial.name}</h4>
-          <p>${testimonial.role}</p>
-        </div>
-      </div>
-      <p class="testimonial-text">"${testimonial.message}"</p>
-    `;
-    container.appendChild(card);
   });
 }
 
